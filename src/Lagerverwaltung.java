@@ -25,7 +25,7 @@ public class Lagerverwaltung {
                     if (bestandCheck(lager)) break;
                     String name = getProduct("Produktname: ", scan);
                     try {
-                        lager.nameCheck(scan);
+                        lager.nameCheck(name);
                         System.out.print("Menge: ");
                         int menge = Integer.parseInt(scan.nextLine());
                         lager.produktEinlagern(name, menge);

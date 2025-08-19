@@ -1,7 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Lager {
     private final List<Produkt> produkte = new ArrayList<>();
@@ -96,8 +95,9 @@ public class Lager {
         }
     }
 
-    public void nameCheck(Scanner scan) {
-        if (!produkte.contains(scan)) {
+    public void nameCheck(String name) {
+
+        if (findeProdukt(name) == null) {
             throw new ExitException("Produkt nicht gefunden.");
         }
     }
