@@ -19,9 +19,10 @@ public class Lagerverwaltung {
                     6. Beenden
                     """);
             String eingabe = getProduct("Auswahl: ", scan);
+            Verwaltung aktion = Verwaltung.parseAktion(eingabe);
 
-            switch (eingabe) {
-                case "1" -> {
+            switch (aktion) {
+                case EINLAGERN -> {
                     if (bestandCheck(lager)) break;
                     String name = getProduct("Produktname: ", scan);
                     try {
@@ -35,7 +36,7 @@ public class Lagerverwaltung {
                         System.out.println(e.getMessage());
                     }
                 }
-                case "2" -> {
+                case AUSLAGERN -> {
                     if (bestandCheck(lager)) break;
                     String name = getProduct("Produktname: ", scan);
                     System.out.print("Menge: ");
@@ -46,8 +47,8 @@ public class Lagerverwaltung {
                         System.out.println("Ungültige Zahl eingegeben!");
                     }
                 }
-                case "3" -> lager.bestandAnzeigen();
-                case "4" -> {
+                case BESTAND_ANZEIGE -> lager.bestandAnzeigen();
+                case NEUES_PRODUKT -> {
                     String name = getProduct("Produktname: ", scan);
                     System.out.print("Menge: ");
                     try {
@@ -57,12 +58,12 @@ public class Lagerverwaltung {
                         System.out.println("Ungültige Zahl eingegeben!");
                     }
                 }
-                case "5" -> {
+                case PRODUKT_ENTFERNEN -> {
                     if (bestandCheck(lager)) break;
                     String name = getProduct("Produktname: ", scan);
                     lager.produktEntfernen(name);
                 }
-                case "6" -> {
+                case BEENDEN -> {
                     running = false;
                     lager.speichereDatei();
                     System.out.println("Programm beendet. Daten gespeichert.");

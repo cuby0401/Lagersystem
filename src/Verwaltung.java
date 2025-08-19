@@ -1,11 +1,21 @@
 public enum Verwaltung {
-    EINLAGERN(1),
-    AUSLAGERN(2),
-    BESTAND(3),
-    NEU(4),
-    KILL(5),
-    BEENDEN(6);
+    EINLAGERN,
+    AUSLAGERN,
+    BESTAND_ANZEIGE,
+    NEUES_PRODUKT,
+    PRODUKT_ENTFERNEN,
+    BEENDEN,
+    UNGUELTIG;
 
-    Verwaltung(int verwaltung) {
+    public static Verwaltung parseAktion(String input) {
+        return switch (input) {
+            case "1" -> Verwaltung.EINLAGERN;
+            case "2" -> Verwaltung.AUSLAGERN;
+            case "3" -> Verwaltung.BESTAND_ANZEIGE;
+            case "4" -> Verwaltung.NEUES_PRODUKT;
+            case "5" -> Verwaltung.PRODUKT_ENTFERNEN;
+            case "6" -> Verwaltung.BEENDEN;
+            default  -> Verwaltung.UNGUELTIG;
+        };
     }
 }
